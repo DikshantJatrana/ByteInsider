@@ -1,11 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Byte Insider - Tech Blogging Site</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div class="site">
+      <%- include("../views/partials/navabar.ejs") %>
+      <main>
+        <section class="hero">
+          <div class="hero-content">
+            <h1>
+              "Empowering minds with "<span class="highlight">technology,</span>
+              <br />
+              software, and coding
+            </h1>
+            <p>
+              There’s no other place that combines such an excellent level of
+              writing with a truly engaged and active community. Byte Insider is
+              truly where ideas are born, shared, and spread.
+            </p>
+            <button class="get-started">Get Started</button>
+            <div class="social-icons">
+              <a href="#"><i class="fa-brands fa-instagram"></i></i></a>
+              <a href="#"><i class="fa-brands fa-github"></i></a>
+              <a href="#"><i class="fa-brands fa-x-twitter"></i></i></a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img src="/images/Blogging.gif" alt="Person working on a laptop" />
+          </div>
+        </section>
+      </main>
+      <%- include("../views/partials/footer.ejs") %>
+    </div>
+    <script>
+      // Add JavaScript if needed
+    </script>
   </body>
 </html>
