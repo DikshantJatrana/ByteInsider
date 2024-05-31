@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/blog_page.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="site">
+      <%- include("../views/partials/navabar.ejs") %>
+      <main>
+        <div class="container">
+          <header class="header-blog">
+            <h1>
+              Join thousands of other community builders in The community club
+            </h1>
+            <p class="subtitle">
+              A simple but effective way to analyze competitors designs
+            </p>
+          </header>
+          <img
+            src="https://via.placeholder.com/800x400"
+            alt="Community builders illustration"
+            class="header-image"
+          />
+          <article>
+            <div class="author-info">
+              <img
+                src="author-image-path.png"
+                alt="Rishika Sharma"
+                class="author-image"
+              />
+              <div class="author-details">
+                <p>Rishika Sharma</p>
+                <p>June 09, 2020 - 7 min read</p>
+                <div class="social-links">
+                  <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                  <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="blog-content">
+              <section>
+                <h2>
+                  The first step for a campaign creator is to identify and set
+                  an objective for their campaign.
+                </h2>
+                <p>
+                  Nowadays, with the breakthroughs of biology and neuroscience,
+                  we can now easily answer these questions. But the ancient
+                  people simply didn’t have that luxury. They had no other
+                  choice but to attribute those miraculous senses that they have
+                  and, subsequently, their existence to the work of God. Man’s
+                  body was deemed as puppets to Gods, to the absolute mind, to
+                  the soul, etc. Or, in modern terms, it would be our body being
+                  a Gundam or a spaceship and the pilot sitting in the cockpit
+                  would be God, our souls, or other supernatural entities...
+                </p>
+              </section>
+              <section>
+                <h2>Understanding #Communities</h2>
+                <p>
+                  So we would have to switch to epistemological considerations,
+                  aka the consideration of the nature and limits of human
+                  intellect. As such, when faced with the question “Is the
+                  transcendental world real?”, we must first ask ourselves what
+                  is our concept of “truth”, and how have we obtained that
+                  concept...
+                </p>
+              </section>
+            </div>
+          </article>
+        </div>
+      </main>
+      <%-include("../views/partials/footer.ejs") %>
+    </div>
+  </body>
+</html>

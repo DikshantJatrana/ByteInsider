@@ -1,8 +1,7 @@
 :root {
-  /* Define color variables */
-  --primary-color: #6534d1; /* Main theme color */
-  --secondary-color: #ecf0f1; /* Light gray */
-  --text-color: #000; /* Text color */
+  --primary-color: #6534d1;
+  --secondary-color: #ecf0f1;
+  --text-color: #000;
   --background-color: #fff; /* Background color */
   --button-bg-color: #6534d1; /* Button background color */
   --button-text-color: #ffffff; /* Button text color */
@@ -13,14 +12,12 @@
 }
 
 body {
-  font-family: "Arial", sans-serif;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  color: var(--text-color);
   background-color: var(--background-color);
-  box-sizing: border-box;
+  color: var(--text-color);
 }
-
 .site {
   min-height: 100dvh;
   display: grid;
@@ -79,6 +76,7 @@ nav {
 .nav-btn-section {
   display: flex;
   gap: 1rem;
+  align-items: center;
 }
 
 .signin-button {
@@ -99,6 +97,7 @@ nav {
   border: 0.15rem solid var(--hover-border-color);
   border-radius: 25px;
 }
+
 .profile-section {
   display: flex;
   align-items: center;
@@ -149,78 +148,92 @@ nav {
 .show {
   display: block;
 }
-.hero {
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header-blog {
+  text-align: left;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  padding: 1rem 0rem 0rem 0rem;
+}
+
+.header-blog h1 {
+  color: var(--text-color);
+  font-size: 2em;
+  margin-bottom: 0.2rem;
+}
+
+.subtitle {
+  color: var(--text-color);
+  font-size: 1.2em;
+}
+
+.header-image {
+  width: 100%;
+  height: auto;
+  margin: 20px 0;
+}
+
+.author-info {
+  min-width: fit-content;
+  padding: 1.5em;
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.author-image {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  margin-bottom: 0.5em;
+}
+
+.author-details p {
+  margin: 0;
+  color: var(--text-color);
+}
+.social-links {
+  margin-top: 0.5em;
+}
+.social-links a {
+  display: inline-flex;
   align-items: center;
-  padding: 2.5rem 2rem;
-  background-color: var(--background-color);
-  border-radius: 10px;
-  margin: 2rem 2rem 2rem 2rem;
-}
-
-.hero-content {
-  max-width: 50%;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  color: var(--text-color);
-}
-
-.hero .highlight {
+  justify-content: center;
+  height: 1.75em; /* Increase height for better spacing around the icon */
+  width: 1.75em; /* Increase width for better spacing around the icon */
+  border-radius: 50%;
+  border: 0.1em solid var(--primary-color); /* Corrected from 'border-radius' to 'border' */
+  padding: 0.1em;
   color: var(--primary-color);
+  font-size: 1.3em;
+  text-decoration: none; /* Remove underline from links */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+.social-links a:hover {
+  background-color: var(--primary-color); /* Background color on hover */
+  color: #fff; /* Text color on hover */
+}
+.blog-content {
+  padding-left: 2em;
+  text-align: left;
+}
+article {
+  margin-bottom: 40px;
+  display: flex;
 }
 
-.hero p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
+article h2 {
   color: var(--text-color);
-}
-
-.get-started {
-  padding: 0.85rem 1.6rem;
-  font-size: 2.2rem;
-  font-weight: 600;
-  background-color: var(--button-bg-color);
-  color: var(--button-text-color);
-  border: 0.2rem solid var(--button-border-color);
-  border-radius: 27px;
-  cursor: pointer;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-.get-started:hover {
-  background-color: var(--hover-bg-color);
-  color: var(--hover-text-color);
-  border: 0.2rem solid var(--hover-border-color);
-  border-radius: 27px;
-}
-
-.social-icons {
-  margin-top: 1rem;
-  margin-left: 1rem;
-}
-
-.social-icons a {
-  margin-right: 1rem;
-  font-size: 2rem;
-  color: var(--text-color);
-}
-
-.social-icons img {
-  width: 24px;
-  height: 24px;
-}
-
-.hero-image {
-  max-width: 50%;
-}
-
-.hero-image img {
-  width: 80%;
-  border-radius: 10px;
-  margin-left: 10%;
+  margin-top: 20px;
 }
 
 footer {
@@ -259,22 +272,4 @@ footer {
 
 .footer-links a {
   font-size: 1rem;
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-content {
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .hero-image {
-    max-width: 100%;
-    margin-top: 2rem;
-  }
 }

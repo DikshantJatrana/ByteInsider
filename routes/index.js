@@ -14,6 +14,30 @@ router.get("/Login", (req, res) => {
 router.get("/SignUp", (req, res) => {
   res.render("sign_up");
 });
+router.get("/Blog", (req, res) => {
+  res.render("blog_page");
+});
+router.get("/price", (req, res) => {
+  res.render("price");
+});
+router.get("/privacy", (req, res) => {
+  res.render("privacy");
+});
+router.get("/about", (req, res) => {
+  res.render("about_us");
+});
+router.get("/profile", (req, res) => {
+  res.render("profile");
+});
+router.get("/author", (req, res) => {
+  res.render("author");
+});
+router.get("/setting", (req, res) => {
+  res.render("setting");
+});
+router.get("/create", (req, res) => {
+  res.render("add_blog");
+});
 router.get("/Error", (req, res) => {
   res.render("error");
 });

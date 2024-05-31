@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pricing - Byte Insider</title>
+    <link rel="stylesheet" href="/stylesheets/price.css" />
+  </head>
+  <body>
+    <div class="site">
+      <%- include("../views/partials/navabar.ejs") %>
+      <main class="pricing-container">
+        <div class="pricing-card">
+          <h3>Free Plan</h3>
+          <p class="price">$0/month</p>
+          <ul>
+            <li>Access to limited articles</li>
+            <li>Email support</li>
+            <li>Monthly newsletter</li>
+          </ul>
+          <a href="#" class="btn">Sign Up</a>
+        </div>
+        <div class="pricing-card">
+          <h3>Standard Plan</h3>
+          <p class="price">$5/month</p>
+          <ul>
+            <li>Access to all articles</li>
+            <li>Priority support</li>
+            <li>Weekly newsletter</li>
+            <li>Exclusive content</li>
+          </ul>
+          <a href="#" class="btn">Sign Up</a>
+        </div>
+      </main>
+      <%-include("../views/partials/footer.ejs") %>
+    </div>
+  </body>
+</html>

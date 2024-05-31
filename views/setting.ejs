@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Settings</title>
+    <link rel="stylesheet" href="/stylesheets/setting.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="site">
+      <%- include("../views/partials/navabar.ejs") %>
+      <div class="profile-center">
+        <div class="profile-settings">
+          <h1>Edit Profile</h1>
+          <p>
+            Keep your personal details private. Information you add here is
+            visible to anyone who can view your profile.
+          </p>
+          <form>
+            <div class="form-group profile-div">
+              <img src="" alt="" / class="profile-img">
+              <span
+                ><label class="btn-profile-pic" for="profile-photo">
+                  Change
+                </label></span
+              >
+              <input type="file" id="profile-photo" name="profile-photo" />
+            </div>
+            <div class="form-group profile-div">
+              <img src="" alt="" / class="cover-img">
+              <span
+                ><label class="btn-profile-pic" for="cover-photo"
+                  >Cover Photo</label
+                ></span
+              >
+              <input type="file" id="cover-photo" name="cover-photo" />
+            </div>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your username"
+              />
+            </div>
+            <div class="form-group">
+              <label for="bio">Bio</label>
+              <textarea
+                id="bio"
+                name="bio"
+                placeholder="Tell your story"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="twitter"
+                >Twitter <i class="fa-brands fa-x-twitter"></i>
+              </label>
+              <input
+                type="url"
+                id="twitter"
+                name="twitter"
+                placeholder="Twitter profile link"
+              />
+            </div>
+            <div class="form-group">
+              <label for="instagram"
+                >Instagram <i class="fa-brands fa-instagram"></i>
+              </label>
+              <input
+                type="url"
+                id="instagram"
+                name="instagram"
+                placeholder="Instagram profile link"
+              />
+            </div>
+            <div class="form-group">
+              <label for="linkedin"
+                >LinkedIn <i class="fa-brands fa-linkedin-in"></i>
+              </label>
+              <input
+                type="url"
+                id="linkedin"
+                name="linkedin"
+                placeholder="LinkedIn profile link"
+              />
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="button button-save">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <%- include("../views/partials/footer.ejs") %>
+    </div>
+  </body>
+</html>
