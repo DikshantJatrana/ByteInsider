@@ -2,6 +2,7 @@ const { array } = require("i/lib/util");
 const mongoose = require("mongoose");
 const { type } = require("os");
 const { createHmac, randomBytes } = require("crypto");
+const { GenerateTokenforUser } = require("../controllers/session");
 
 mongoose
   .connect("mongodb://localhost:27017/Byte-Insider")
@@ -94,7 +95,8 @@ UserSchema.static("MatchingPassword", async function (Email, Password) {
   if (HashedPassword !== UserProvidedPassword) {
     console.log("Incorrect password");
   } else {
-    return { ...user, Password: undefined, Salt: undefined };
+    const token = GenerateTokenforUser(user);
+    return token;
   }
 });
 
