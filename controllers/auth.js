@@ -21,7 +21,12 @@ async function HandleUserLogin(req, res, next) {
   }
 }
 
+async function LogoutUser(req, res, next) {
+  res.clearCookie("token");
+  res.redirect("/");
+}
 module.exports = {
   HandleUserLogin,
   HandleUserSignUp,
+  LogoutUser,
 };

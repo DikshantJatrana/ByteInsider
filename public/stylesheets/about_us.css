@@ -78,18 +78,18 @@ nav {
   font-size: 1rem;
   font-weight: 600;
   padding: 0.65rem 1.1rem;
-  background-color: var(--button-bg-color);
-  color: var(--button-text-color);
-  border: 0.15rem solid var(--button-border-color);
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: 0.15rem solid var(--background-color);
   border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .signin-button:hover {
-  background-color: var(--hover-bg-color);
-  color: var(--hover-text-color);
-  border: 0.15rem solid var(--hover-border-color);
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  border: 0.15rem solid var(--primary-color);
   border-radius: 25px;
 }
 
@@ -109,6 +109,7 @@ nav {
 
 .profile-name {
   font-size: 1rem;
+  text-transform: capitalize;
   font-weight: bold;
   color: var(--text-color);
 }
@@ -137,7 +138,8 @@ nav {
 }
 .dropdown-content a:hover {
   background-color: var(--primary-color);
-  color: var(--button-text-color);
+  text-decoration: none;
+  color: var(--background-color);
 }
 
 .show {

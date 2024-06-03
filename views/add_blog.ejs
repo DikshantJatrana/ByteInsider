@@ -19,18 +19,14 @@
       <div class="profile-center">
         <div class="profile-settings">
           <h1>Create a New Blog</h1>
-          <form
-            action="/create-blog"
-            method="POST"
-            enctype="multipart/form-data"
-          >
+          <form action="/write" method="POST" enctype="multipart/form-data">
             <div class="form-group cover-section">
-              <img src="https://picsum.photos/100x200" class="cover-pic" />
+              <img src="https://placehold.co/200X100" class="cover-pic" />
               <span><label for="cover-photo">Cover Image</label></span>
               <input
                 type="file"
                 id="cover-photo"
-                name="cover-photo"
+                name="coverPhoto"
                 accept="image/*"
                 required
               />

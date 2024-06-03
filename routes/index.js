@@ -1,11 +1,17 @@
 var express = require("express");
-const { HandleUserLogin, HandleUserSignUp } = require("../controllers/auth");
+const {
+  HandleUserLogin,
+  HandleUserSignUp,
+  LogoutUser,
+} = require("../controllers/auth");
 const { IsLoggedIn } = require("../Middleware/AUTH.JS");
 var router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express" });
+  res.render("index", {
+    user: req.user,
+  });
 });
 router.get("/Home", (req, res) => {
   res.render("home", {
@@ -17,13 +23,11 @@ router.get("/Login", (req, res) => {
     user: req.user,
   });
 });
-router.post("/Login", HandleUserLogin);
 router.get("/SignUp", (req, res) => {
   res.render("sign_up", {
     user: req.user,
   });
 });
-router.post("/SignUp", HandleUserSignUp);
 router.get("/Blog", IsLoggedIn, (req, res) => {
   res.render("blog_page", {
     user: req.user,

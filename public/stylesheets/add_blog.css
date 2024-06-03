@@ -115,6 +115,7 @@ nav {
 
 .profile-name {
   font-size: 1rem;
+  text-transform: capitalize;
   font-weight: bold;
   color: var(--text-color);
 }

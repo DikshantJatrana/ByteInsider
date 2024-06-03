@@ -1,28 +1,33 @@
 <header>
   <nav>
-    <div class="logo" style="cursor: pointer;">Byte Insider</div>
+    <div class="logo" style="cursor: pointer">Byte Insider</div>
     <ul class="nav-links">
-      <li><a href="#about">Write</a></li>
-      <li><a href="#how-it-works">Membership</a></li>
-      <li><a href="#support">About Us</a></li>
+      <li><a href="/create">Write</a></li>
+      <li><a href="/price">Membership</a></li>
+      <li><a href="/about">About Us</a></li>
     </ul>
-    <div class="nav-btn-section">
-      <button class="signin-button">Sign Up</button>
-      <button class="signin-button">Log In</button>
-    </div>
+    <% if (locals.user) { %>
     <div class="profile-section" onclick="toggleDropdown()">
       <img
-        src="https://via.placeholder.com/40"
+        src="<%= user.ProfilePhoto || 'https://via.placeholder.com/40' %>"
         alt="Profile Picture"
         class="profile-pic"
       />
-      <span class="profile-name">John Doe</span>
+      <span class="profile-name"><%=user.Username%></span>
       <div class="dropdown-content" id="dropdown">
-        <a href="#settings"><span><i class="fa-solid fa-user"></i></i></span></i> Profile</a>
-        <a href="#logout"
+        <a href="/Profile"
+          ><span><i class="fa-solid fa-user"></i></span> Profile</a
+        >
+        <a href="/Logout"
           ><span><i class="fa-solid fa-right-from-bracket"></i></span> Logout</a
         >
       </div>
     </div>
+    <% } else { %>
+    <div class="nav-btn-section">
+      <button id="SignBtn" class="signin-button">Sign Up</button>
+      <button id="LogInBtn" class="signin-button">Log In</button>
+    </div>
+    <% } %>
   </nav>
 </header>

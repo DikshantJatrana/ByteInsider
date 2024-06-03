@@ -12,3 +12,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+const Logo = document.querySelector(".logo");
+Logo.addEventListener("click", () => {
+  window.location.href = "/";
+});
+
+const SignBtn = document.querySelector("#SignBtn");
+SignBtn.addEventListener("click", () => {
+  window.location.href = "/SignUp";
+});
+
+const LoginBtn = document.querySelector("#LogInBtn");
+LoginBtn.addEventListener("click", () => {
+  window.location.href = "/Login";
+});
