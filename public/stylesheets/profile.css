@@ -155,10 +155,16 @@ nav {
   margin: 0 auto;
   padding: 6em;
   padding-top: 4em;
+  padding-bottom: 3em;
 }
-
+.profile-container1 {
+  margin: 0 auto;
+  padding: 3em;
+  padding-top: 2em;
+  border-top: 0.2em solid var(--primary-color);
+}
 .profile-header {
-  margin: auto 8em;
+  margin: auto;
   position: relative;
   text-align: center;
   color: var(--text-color);
@@ -246,7 +252,8 @@ nav {
   gap: 1em;
 }
 
-.profile-actions button {
+.profile-actions .Follow {
+  text-decoration: none;
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
   border: 0.16em solid var(--button-border-color);
@@ -256,15 +263,34 @@ nav {
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
-.profile-actions button span {
+.profile-actions .Follow span {
   margin-left: 0.5em;
 }
-.profile-actions button:hover {
+.profile-actions .Follow:hover {
   background-color: var(--hover-bg-color);
   color: var(--hover-text-color);
   border: 0.16em solid var(--hover-border-color);
 }
+.profile-actions .Following span {
+  margin-left: 0.5em;
+}
 
+.Following {
+  text-decoration: none;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  border: 0.16em solid var(--primary-color);
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 0.5em;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+.Following:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: 0.16em solid var(--background-color);
+}
 .profile-content {
   margin-top: 20px;
 }
@@ -272,8 +298,24 @@ nav {
 .recent-posts h2 {
   color: var(--primary-color);
 }
-
-.post {
+.profile-actions button {
+  text-decoration: none;
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+.after-click {
+  background-color: var(--hover-bg-color);
+  color: var(--hover-text-color);
+  border: 0.16em solid var(--hover-border-color);
+}
+.before-click {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  border: 0.16em solid var(--button-border-color);
+}
+.b-click .post {
   background-color: var(--secondary-color);
   border-radius: 10px;
   padding: 20px;
@@ -331,6 +373,96 @@ nav {
   border: 1px solid var(--hover-border-color);
 }
 
+.additional-posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.post {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.post img {
+  height: 200px;
+  object-fit: cover;
+  padding: 8px;
+}
+.post-content {
+  padding: 16px;
+}
+.post-content .author {
+  font-size: 0.9em;
+  color: #777;
+}
+.post-content h3 {
+  margin: 10px 0;
+  font-size: 1.2em;
+  color: #333;
+}
+.post-content p {
+  font-size: 0.95em;
+  color: #555;
+}
+.post-content .tags {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .additional-posts {
+    justify-content: space-between;
+  }
+  .post {
+    max-width: 47.75%;
+  }
+}
+@media (min-width: 1200px) {
+  .post {
+    max-width: 31%;
+  }
+}
+
+.post-content .tags {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.tags {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.tags i {
+  font-size: 1.5em;
+  color: var(--text-color);
+}
+.tags-link {
+  font-weight: 600;
+  font-size: 1.2em;
+  padding: 0.45em 0.75em;
+  text-decoration: none;
+  color: var(--background-color);
+  background-color: var(--primary-color);
+  border-radius: 0.35em;
+}
+.hidden {
+  display: none;
+}
 footer {
   background-color: var(--primary-color); /* Dark blue-gray */
   color: var(--button-text-color); /* Light gray */

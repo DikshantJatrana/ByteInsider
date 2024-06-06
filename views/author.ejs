@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile Page</title>
+    <title>Byte Insider - Tech Blogging Site</title>
+    <link rel="icon" href="/images/byte.png" type="image/x-icon" />
     <link rel="stylesheet" href="/stylesheets/profile.css" />
     <link
       rel="stylesheet"
@@ -15,78 +16,90 @@
   </head>
   <body>
     <div class="site">
-      <%- include("../views/partials/navabar.ejs") %>
+      <%- include("../views/partials/navabar.ejs") %> <% if (user) { %>
       <div class="profile-container">
         <div class="profile-header">
           <img
-            src="https://via.placeholder.com/800x150"
+            src="<%= author.CoverPhoto || 'https://via.placeholder.com/800x150' %>"
             alt="Cover Image"
             class="cover-image"
           />
           <div class="profile-info">
             <img
-              src="path-to-profile-image.jpg"
+              src="<%= author.ProfilePhoto || 'path-to-profile-image.jpg' %>"
               alt="Profile Image"
               class="profile-image"
             />
             <div class="profile-details">
-              <h1>Daniela</h1>
-              <p>35 yo &middot; Kips Bay</p>
+              <h1 style="text-transform: capitalize"><%= author.Username %></h1>
+              <p><%= author.Bio.join(' &middot; ') %></p>
+              <div class="profile-link">
+                <a href="<%= author.TwitterLink %>"
+                  ><i class="fa-brands fa-x-twitter"></i
+                ></a>
+                <a href="<%= author.InstagramLink %>"
+                  ><i class="fa-brands fa-instagram"></i
+                ></a>
+                <a href="<%= author.LinkedinLink %>"
+                  ><i class="fa-brands fa-linkedin-in"></i
+                ></a>
+              </div>
             </div>
             <div class="profile-stats">
               <div>
-                <strong>218</strong>
-                <p>Posts</p>
+                <strong><%= author.Blog ? author.Blog.length : 0 %></strong>
+                <p>Blog</p>
               </div>
               <div>
-                <strong>98</strong>
+                <strong><%= author.Follower.length %></strong>
                 <p>Followers</p>
               </div>
               <div>
-                <strong>6</strong>
-                <p>Photos</p>
+                <strong><%= author.Following.length %></strong>
+                <p>Following</p>
               </div>
             </div>
             <div class="profile-actions">
-              <button>
+              <% if (Following) { %>
+              <a class="<%= Following %>" href="/unfollow/<%= author._id %>">
+                Following <span><i class="fa-solid fa-user-minus"></i></span>
+              </a>
+              <% } else { %>
+              <a class="Follow" href="/follow/<%= author._id %>">
                 Follow <span><i class="fa-solid fa-user-plus"></i></span>
-              </button>
+              </a>
+              <% } %>
             </div>
           </div>
         </div>
-        <main class="profile-content">
-          <section class="recent-posts">
-            <h2>Recent posts</h2>
-            <article class="post">
-              <div class="post-header">
-                <img
-                  src="path-to-profile-image.jpg"
-                  alt="Profile Image"
-                  class="post-profile-image"
-                />
-                <div class="post-details">
-                  <h3>Daniela &middot; 35 yo</h3>
-                  <p>29 min ago &middot; Kips Bay</p>
-                </div>
-              </div>
-              <div class="post-body">
-                <h4>Home cooking</h4>
-                <p>
-                  I’m looking for a reliable recipe for a potato casserole with
-                  wild mushrooms – I had it while on vacation, and it was
-                  phenomenal...
-                </p>
-              </div>
-              <div class="post-footer">
-                <span>8</span>
-                <button>Reply</button>
-              </div>
-            </article>
-          </section>
-        </main>
       </div>
-      <%- include("../views/partials/footer.ejs")%>
+      <% } else { %>
+      <p>Please log in to view your profile.</p>
+      <% } %>
+      <div class="profile-container1">
+        <div class="additional-posts">
+          <% author.Blogs.forEach(blog => { %>
+          <div class="post">
+            <img src="<%= blog.coverPhoto %>" alt="<%= blog.title %>" />
+            <div class="post-content">
+              <span class="author"
+                ><%= blog.author.Username %> • <%= blog.createdAt.toDateString()
+                %></span
+              >
+              <h3><%= blog.title %></h3>
+              <p><%= blog.content.split(' ').slice(0, 30).join(' ') %></p>
+              <span class="tags"
+                ><a class="tags-link" href="/blog/<%= blog._id %>">Read</a
+                ><a href="/like/<%= blog._id %>">
+                  <i class="fa-solid fa-heart"></i></a
+              ></span>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+      <%-include("../views/partials/footer.ejs")%>
     </div>
-    <script src="/javascripts/author.js"></script>
+    <script src="/javascripts/profile.js"></script>
   </body>
 </html>

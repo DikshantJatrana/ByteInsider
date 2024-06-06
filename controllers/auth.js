@@ -1,3 +1,4 @@
+const { error } = require("console");
 const User = require("../models/User");
 
 async function HandleUserSignUp(req, res, next) {
@@ -14,10 +15,14 @@ async function HandleUserLogin(req, res, next) {
   const { Email, Password } = req.body;
   try {
     const token = await User.MatchingPassword(Email, Password);
+    if (!token) {
+      return res.render("log_in", { error: "Invalid Email or Password" });
+    }
     res.cookie("token", token);
-    return res.redirect("/Blog");
+    return res.redirect("/Home");
   } catch (error) {
-    res.render("log_in", { error: "Invalid Email or Password" });
+    console.error("Login Error:", error);
+    return res.render("log_in", { error: "Invalid Email or Password" });
   }
 }
 

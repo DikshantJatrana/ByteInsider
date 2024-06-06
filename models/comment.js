@@ -1,18 +1,17 @@
 const mongoose = require("mongoose");
+const { type } = require("os");
 
 const commentSchema = new mongoose.Schema({
   content: {
     type: String,
     required: true,
   },
-  author: {
+  commentWriter: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  post: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Blog",
-    required: true,
+  blog: {
+    type: String,
   },
   createdAt: {
     type: Date,

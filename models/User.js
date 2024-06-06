@@ -4,10 +4,6 @@ const { type } = require("os");
 const { createHmac, randomBytes } = require("crypto");
 const { GenerateTokenforUser } = require("../controllers/session");
 
-mongoose
-  .connect("mongodb://localhost:27017/Byte-Insider")
-  .then(console.log("MongoDB is connected"));
-
 const UserSchema = new mongoose.Schema({
   Username: {
     type: String,
@@ -25,18 +21,24 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  Follower: {
-    type: Array,
-    default: [],
-  },
-  Following: {
-    type: Array,
-    default: [],
-  },
-  Liked: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Blog",
-  },
+  Follower: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
+  Following: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
+  Liked: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Blog",
+    },
+  ],
   Bio: {
     type: Array,
     default: [],
@@ -48,10 +50,12 @@ const UserSchema = new mongoose.Schema({
   CoverPhoto: {
     type: String,
   },
-  Blog: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Blog",
-  },
+  Blogs: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Blog",
+    },
+  ],
   TwitterLink: {
     type: String,
   },
@@ -84,7 +88,7 @@ UserSchema.pre("save", function (next) {
 UserSchema.static("MatchingPassword", async function (Email, Password) {
   const user = await this.findOne({ Email });
   if (!user) {
-    console.log("User Not Found");
+    return null;
   }
   const salt = user.Salt;
   const HashedPassword = user.Password;
@@ -93,7 +97,7 @@ UserSchema.static("MatchingPassword", async function (Email, Password) {
     .update(Password)
     .digest("hex");
   if (HashedPassword !== UserProvidedPassword) {
-    console.log("Incorrect password");
+    return null;
   } else {
     const token = GenerateTokenforUser(user);
     return token;

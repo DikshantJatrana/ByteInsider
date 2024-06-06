@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog Website</title>
+    <title>Byte Insider - Tech Blogging Site</title>
+    <link rel="icon" href="/images/byte.png" type="image/x-icon" />
     <link rel="stylesheet" href="/stylesheets/home.css" />
     <link
       rel="stylesheet"
@@ -20,108 +21,95 @@
         <div class="container">
           <section class="main-content">
             <h2 class="center">Our Blog</h2>
-            <h1 class="center">Stories & Ideas</h1>
+            <h1 class="center">Innovation & Ideas</h1>
             <p class="center">
-              Explore breathtaking landscapes, iconic landmarks, and hidden gems
-              around the globe
+              Discover the future of innovation, unravel the mysteries of
+              technology, and explore the cutting-edge trends shaping our world
             </p>
             <div class="content-grid">
+              <% if (Blog1) { %>
               <div class="blog-post">
-                <img
-                  src="https://via.placeholder.com/800x400"
-                  alt="Mount Fuji"
-                />
+                <img src="<%= Blog1.coverPhoto %>" alt="<%= Blog1.title %>" />
                 <div class="post-content">
-                  <span class="category">TRAVEL</span>
-                  <h2>Unveiling The Majestic Beauty Of Mount Fuji</h2>
-                  <p>
-                    A Journey To Japan's Iconic Symbol And Natural Wonder.
-                    Discover The Rich History, Breathtaking Landscapes, And
-                    Cultural Significance Of This Iconic Landmark
-                  </p>
-                  <span class="tags"
-                    ><a href="">Read</a><i class="fa-solid fa-heart"></i
-                  ></span>
+                  <span class="category"
+                    ><%= Blog1.author.Username %> &middot; <%=
+                    Blog1.createdAt.toDateString() %>
+                  </span>
+                  <h2><%= Blog1.title %></h2>
+                  <p><%= Blog1.content.split(' ').slice(0, 30).join(' ') %></p>
+                  <span class="tags">
+                    <a class="tags-link" href="/blog/<%= Blog1._id %>">Read</a>
+                    <% if (Blog1.isLiked) { %>
+                    <a class="like" href="/unlike/<%= Blog1._id %>">
+                      <i class="fa-solid fa-heart"></i>
+                    </a>
+                    <% } else { %>
+                    <a class="notlike" href="/like/<%= Blog1._id %>">
+                      <i class="fa-solid fa-heart"></i>
+                    </a>
+                    <% } %>
+                  </span>
                 </div>
               </div>
+              <% } %>
               <aside class="sidebar">
                 <h3>Top Stories</h3>
                 <ul>
+                  <% Blog3.forEach(blog => { %>
                   <li>
-                    <img
-                      src="https://via.placeholder.com/60"
-                      alt="Mountains and Boat"
-                    />
+                    <img src="<%= blog.coverPhoto %>" alt="<%= blog.title %>" />
                     <div class="story-info">
-                      <h4>Mountains and Boat: A Perfect Harmony</h4>
-                      <p>John Smith • 24 Jan 2023</p>
-                      <span class="top-stoies-read"
-                        ><a href="">Read</a><i class="fa-solid fa-heart"></i
-                      ></span>
+                      <h4><%= blog.title %></h4>
+                      <p>
+                        <%= blog.author.Username %> • <%=
+                        blog.createdAt.toDateString() %>
+                      </p>
+                      <span class="top-stories-read">
+                        <a class="top-link" href="/blog/<%= blog._id %>"
+                          >Read</a
+                        >
+                        <% if (blog.isLiked) { %>
+                        <a class="like" href="/unlike/<%= blog._id %>">
+                          <i class="fa-solid fa-heart"></i>
+                        </a>
+                        <% } else { %>
+                        <a class="notlike" href="/like/<%= blog._id %>">
+                          <i class="fa-solid fa-heart"></i>
+                        </a>
+                        <% } %>
+                      </span>
                     </div>
                   </li>
-                  <li>
-                    <img
-                      src="https://via.placeholder.com/60"
-                      alt="Old Street"
-                    />
-                    <div class="story-info">
-                      <h4>
-                        Unveiling the Timeless Charm of Old Street Buildings
-                      </h4>
-                      <p>John Smith • 24 Jan 2023</p>
-                      <span class="top-stoies-read"
-                        ><a href="">Read</a><i class="fa-solid fa-heart"></i
-                      ></span>
-                    </div>
-                  </li>
-                  <li>
-                    <img
-                      src="https://via.placeholder.com/60"
-                      alt="Whispering Trees"
-                    />
-                    <div class="story-info">
-                      <h4>Whispering Trees and the Enchanting Moon</h4>
-                      <p>John Smith • 24 Jan 2023</p>
-                      <span class="top-stoies-read"
-                        ><a href="">Read</a><i class="fa-solid fa-heart"></i
-                      ></span>
-                    </div>
-                  </li>
+                  <% }) %>
                 </ul>
               </aside>
             </div>
             <div class="additional-posts">
+              <% Blogs.forEach(blog => { %>
               <div class="post">
-                <img src="https://via.placeholder.com/400x200" alt="City" />
+                <img src="<%= blog.coverPhoto %>" alt="<%= blog.title %>" />
                 <div class="post-content">
-                  <span class="author">Candice Wu • 15 Jan 2022</span>
-                  <h3>The Pulse of the City Unfolds on the Fast Lanes</h3>
-                  <p>
-                    Embark on an exhilarating ride through the bustling urban
-                    highways, where the rhythm of the city echoes in the hum of
-                    engines and the dazzling lights of the skyline.
-                  </p>
-                  <span class="tags"
-                    ><a href="">Read</a><i class="fa-solid fa-heart"></i
-                  ></span>
+                  <span class="author">
+                    <%= blog.author.Username %> • <%=
+                    blog.createdAt.toDateString() %>
+                  </span>
+                  <h3><%= blog.title %></h3>
+                  <p><%= blog.content.split(' ').slice(0, 30).join(' ') %></p>
+                  <span class="tags">
+                    <a class="tags-link" href="/blog/<%= blog._id %>">Read</a>
+                    <% if (blog.isLiked) { %>
+                    <a class="like" href="/unlike/<%= blog._id %>">
+                      <i class="fa-solid fa-heart"></i>
+                    </a>
+                    <% } else { %>
+                    <a class="notlike" href="/like/<%= blog._id %>">
+                      <i class="fa-solid fa-heart"></i>
+                    </a>
+                    <% } %>
+                  </span>
                 </div>
               </div>
-              <div class="post">
-                <img src="https://via.placeholder.com/400x200" alt="Cosmos" />
-                <div class="post-content">
-                  <span class="author">Alec Whitman • 17 Jan 2022</span>
-                  <h3>A Cosmic Adventure Underneath the Starlit Canopy</h3>
-                  <p>
-                    Embark on an extraordinary odyssey as we merge the realms of
-                    mankind, automotive marvels, and the awe-inspiring Milky
-                    Way. Join us on a celestial journey through the cosmos.
-                  </p>
-                  <span class="tags"
-                    ><a href="">Read</a><i class="fa-solid fa-heart"></i
-                  ></span>
-                </div>
-              </div>
+              <% }) %>
             </div>
           </section>
         </div>

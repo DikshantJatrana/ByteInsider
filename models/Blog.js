@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const blogSchema = new mongoose.Schema({
+const BlogSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -13,10 +13,12 @@ const blogSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  likes: {
-    type: Number,
-    default: 0,
-  },
+  likes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Blog",
+    },
+  ],
   content: {
     type: String,
     required: true,
@@ -37,6 +39,6 @@ const blogSchema = new mongoose.Schema({
   ],
 });
 
-const Blog = mongoose.model("Blog", blogSchema);
+const Blog = new mongoose.model("Blog", BlogSchema);
 
 module.exports = Blog;

@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Byte Insider - Tech Blogging Site</title>
+    <link rel="icon" href="/images/byte.png" type="image/x-icon" />
     <link rel="stylesheet" href="/stylesheets/blog_page.css" />
     <link
       rel="stylesheet"
@@ -15,73 +16,89 @@
   </head>
   <body>
     <div class="site">
-      <%- include("../views/partials/navabar.ejs") %>
+      <%- include("../views/partials/navabar.ejs") %> <% if (blog) { %>
       <main>
         <div class="container">
           <header class="header-blog">
-            <h1>
-              Join thousands of other community builders in The community club
-            </h1>
-            <p class="subtitle">
-              A simple but effective way to analyze competitors designs
-            </p>
+            <h1><%= blog.title %></h1>
           </header>
           <img
-            src="https://via.placeholder.com/800x400"
+            src="<%= blog.coverPhoto %>"
             alt="Community builders illustration"
             class="header-image"
           />
           <article>
             <div class="author-info">
-              <img
-                src="author-image-path.png"
-                alt="Rishika Sharma"
-                class="author-image"
-              />
-              <div class="author-details">
-                <p>Rishika Sharma</p>
-                <p>June 09, 2020 - 7 min read</p>
-                <div class="social-links">
-                  <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                  <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <div class="author-info-in">
+                <img
+                  src="<%= blog.author.ProfilePhoto %>"
+                  alt="<%= blog.author.Username %>"
+                  class="author-image"
+                />
+                <div class="author-details">
+                  <a href="/author/<%= blog.author._id %>"
+                    ><%= blog.author.Username %></a
+                  >
+                  <p><%= blog.createdAt.toDateString() %></p>
+                  <div class="social-links">
+                    <a href="<%= blog.author.TwitterLink %>"
+                      ><i class="fa-brands fa-x-twitter"></i
+                    ></a>
+                    <a href="<%= blog.author.LinkedinLink %>"
+                      ><i class="fa-brands fa-linkedin-in"></i
+                    ></a>
+                    <a href="<%= blog.author.InstagramLink %>"
+                      ><i class="fa-brands fa-instagram"></i
+                    ></a>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="blog-content">
-              <section>
-                <h2>
-                  The first step for a campaign creator is to identify and set
-                  an objective for their campaign.
-                </h2>
-                <p>
-                  Nowadays, with the breakthroughs of biology and neuroscience,
-                  we can now easily answer these questions. But the ancient
-                  people simply didn’t have that luxury. They had no other
-                  choice but to attribute those miraculous senses that they have
-                  and, subsequently, their existence to the work of God. Man’s
-                  body was deemed as puppets to Gods, to the absolute mind, to
-                  the soul, etc. Or, in modern terms, it would be our body being
-                  a Gundam or a spaceship and the pilot sitting in the cockpit
-                  would be God, our souls, or other supernatural entities...
-                </p>
-              </section>
-              <section>
-                <h2>Understanding #Communities</h2>
-                <p>
-                  So we would have to switch to epistemological considerations,
-                  aka the consideration of the nature and limits of human
-                  intellect. As such, when faced with the question “Is the
-                  transcendental world real?”, we must first ask ourselves what
-                  is our concept of “truth”, and how have we obtained that
-                  concept...
-                </p>
-              </section>
+              <% blog.content.split('\n').forEach(paragraph => { %>
+              <p><%= paragraph %></p>
+              <% }) %>
             </div>
           </article>
+          <div class="comment-section">
+            <h2>Comments <i class="fa-solid fa-comment"></i></h2>
+            <form
+              id="commentForm"
+              action="/comment/<%=blog._id%>"
+              method="post"
+            >
+              <textarea
+                id="commentInput"
+                name="content"
+                placeholder="Write your comment here..."
+                required
+              ></textarea>
+              <button type="submit">
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+            <div id="commentsContainer">
+              <% comments.forEach(comment => { %>
+              <div class="comment">
+                <img
+                  src="<%= comment.commentWriter.ProfilePhoto %>"
+                  alt="John Doe's profile picture"
+                />
+                <div class="comment-details">
+                  <div class="author-name">
+                    <a href="/author/<%= comment.commentWriter._id %>"
+                      ><%= comment.commentWriter.Username %></a
+                    >
+                  </div>
+                  <div class="comment-text"><%= comment.content %></div>
+                </div>
+              </div>
+              <% }) %>
+            </div>
+          </div>
         </div>
       </main>
-      <%-include("../views/partials/footer.ejs") %>
+      <% } %> <%-include("../views/partials/footer.ejs") %>
     </div>
     <script src="/javascripts/blog_page.js"></script>
   </body>

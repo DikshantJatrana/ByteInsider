@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile Page</title>
+    <title>Byte Insider - Tech Blogging Site</title>
+    <link rel="icon" href="/images/byte.png" type="image/x-icon" />
     <link rel="stylesheet" href="/stylesheets/profile.css" />
     <link
       rel="stylesheet"
@@ -63,15 +64,58 @@
               </div>
             </div>
             <div class="profile-actions">
-              <button>Created</button>
-              <button>Liked</button>
+              <button id="created-btn" class="after-click">Created</button>
+              <button id="liked-btn" class="before-click">Liked</button>
             </div>
           </div>
         </div>
       </div>
       <% } else { %>
       <p>Please log in to view your profile.</p>
-      <% } %> <%-include("../views/partials/footer.ejs")%>
+      <% } %>
+      <div class="profile-container1">
+        <div id="Created" class="additional-posts">
+          <% user.Blogs.forEach(blog => { %>
+          <div class="post">
+            <img src="<%= blog.coverPhoto %>" alt="<%= blog.title %>" />
+            <div class="post-content">
+              <span class="author"
+                ><%= blog.author.Username %> • <%= blog.createdAt.toDateString()
+                %></span
+              >
+              <h3><%= blog.title %></h3>
+              <p><%= blog.content.split(' ').slice(0, 30).join(' ') %></p>
+              <span class="tags"
+                ><a class="tags-link" href="/blog/<%= blog._id %>">Read</a
+                ><a href="/like/<%= blog._id %>">
+                  <i class="fa-solid fa-heart"></i></a
+              ></span>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+        <div id="Liked" class="additional-posts hidden">
+          <% userLike.Liked.forEach(blog => { %>
+          <div class="post">
+            <img src="<%= blog.coverPhoto %>" alt="<%= blog.title %>" />
+            <div class="post-content">
+              <span class="author"
+                ><%= blog.author.Username %> • <%= blog.createdAt.toDateString()
+                %></span
+              >
+              <h3><%= blog.title %></h3>
+              <p><%= blog.content.split(' ').slice(0, 30).join(' ') %></p>
+              <span class="tags"
+                ><a class="tags-link" href="/blog/<%= blog._id %>">Read</a
+                ><a href="/like/<%= blog._id %>">
+                  <i class="fa-solid fa-heart"></i></a
+              ></span>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+      <%-include("../views/partials/footer.ejs")%>
     </div>
     <script src="/javascripts/profile.js"></script>
   </body>

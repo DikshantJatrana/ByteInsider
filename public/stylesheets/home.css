@@ -208,18 +208,72 @@ main {
 }
 
 .additional-posts {
-  flex: 1;
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.post {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.post img {
+  height: 200px;
+  object-fit: cover;
+  padding: 8px;
+}
+.post-content {
+  padding: 16px;
+}
+.post-content .author {
+  font-size: 0.9em;
+  color: #777;
+}
+.post-content h3 {
+  margin: 10px 0;
+  font-size: 1.2em;
+  color: #333;
+}
+.post-content p {
+  font-size: 0.95em;
+  color: #555;
+}
+.post-content .tags {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
-.post {
-  background-color: #fff;
-  padding: 1rem;
-  flex: 1;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+@media (min-width: 768px) {
+  .additional-posts {
+    justify-content: space-between;
+  }
+  .post {
+    max-width: 48%;
+  }
 }
+@media (min-width: 1200px) {
+  .post {
+    max-width: 31.75%;
+  }
+}
+
+.post-content .tags {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
 .tags {
   display: flex;
   justify-content: space-between;
@@ -230,7 +284,7 @@ main {
 .tags i {
   font-size: 1.5em;
 }
-.tags a {
+.tags-link {
   font-weight: 600;
   font-size: 1.2em;
   padding: 0.45em 0.75em;
@@ -238,6 +292,12 @@ main {
   color: var(--background-color);
   background-color: var(--primary-color);
   border-radius: 0.35em;
+}
+.like {
+  color: #ff6600;
+}
+.notLike {
+  color: #000;
 }
 .sidebar {
   width: 300px;
@@ -253,6 +313,10 @@ main {
 }
 
 .sidebar ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 1.5em;
   list-style: none;
   padding: 0;
 }
@@ -292,21 +356,22 @@ main {
   font-size: 0.875rem;
 }
 
-.top-stoies-read {
+.top-stories-read {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.top-stoies-read i {
-  font-size: 1.3rem;
-}
-.top-stoies-read a {
+
+.top-link {
   background-color: var(--primary-color);
   text-decoration: none;
   color: var(--button-text-color);
   font-size: 1rem;
   padding: 0.45em;
   border-radius: 0.25em;
+}
+.fa-solid {
+  font-size: 1.3em;
 }
 footer {
   background-color: var(--primary-color); /* Dark blue-gray */

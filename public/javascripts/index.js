@@ -20,7 +20,7 @@ Logo.addEventListener("click", () => {
 const GetStartedBtn = document.querySelector(".get-started");
 
 GetStartedBtn.addEventListener("click", function () {
-  window.location.href = "/SignUp";
+  window.location.href = "/Home";
 });
 
 const SignBtn = document.querySelector("#SignBtn");
