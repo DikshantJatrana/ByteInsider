@@ -13,7 +13,7 @@ mongoose
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-const { CheckTokenForLogin } = require("./Middleware/AUTH");
+const { CheckTokenForLogin } = require("./Middleware/auth");
 
 var app = express();
 

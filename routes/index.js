@@ -4,7 +4,7 @@ const {
   HandleUserSignUp,
   LogoutUser,
 } = require("../controllers/auth");
-const { IsLoggedIn } = require("../Middleware/AUTH.JS");
+const { IsLoggedIn } = require("../Middleware/auth");
 const Blog = require("../models/Blog");
 const User = require("../models/User");
 const Comment = require("../models/comment");
